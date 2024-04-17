@@ -12,10 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('list_content', function (Blueprint $table) {
-            $table->integer('Content_Id')->primary()->autoincrement();
-            $table->integer('Project_Id');
-            $table->string('filename',20);
-            $table->string('status',10);
+            $table->id();
+            $table->string('Project_Id');
+            $table->string('filename');
             $table->timestamps();
         });
     }

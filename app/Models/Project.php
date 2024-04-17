@@ -8,5 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     use HasFactory;
-    /* protected $table= 'list_project'; */
+    protected $table= 'list_project';
+    protected $primaryKey = 'Project_id';
+    protected $guarded =[];
+
 }

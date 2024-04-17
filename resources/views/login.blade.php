@@ -53,18 +53,29 @@
     <div class="login-form d-flex justify-content-center align-items-center vh-100">
       <div class="login-component d-flex" style="width: 50%;">
         <div class="kiri w-100" ></div>
-        <div class="kanan w-100 d-flex flex-column bg-light">
+        <div class="kanan w-100 d-flex flex-column bg-light align-items-center">
           <h1 style="margin-left:30px;margin-bottom: 50px;margin-top: 25px;"><strong>LOGIN</strong></h1>
-          <form action="" style="margin: 30px; justify-self: center;">
+          @if ($errors->any())
+            <div class="alert alert-danger m-2">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+          @endif
+          <form action="sesi/login" style="margin: 30px; justify-self: center;" method="POST">
+            @csrf
             <div class="username d-flex w-100 p-2 justify-content-center align-items-center bg-light" style="border: 1px solid black; border-radius: 10px; margin-bottom: 20px;">
               <i class="fa fa-user" style="width: 20px;"></i>
-              <input type="text" placeholder="Username" style="width: 95%; border:none; background: transparent;" required> 
+              <input type="text" name="username" value="{{Session::get('username')}}" placeholder="Username" style="width: 95%; border:none; background: transparent;" required> 
             </div>
             <div class="password d-flex w-100 p-2 justify-content-center align-items-center bg-light" style="border: 1px solid black; border-radius: 10px; margin-bottom: 20px;">
               <i class="fa fa-key" style="width: 20px;"></i>
-              <input type="password" placeholder="Password" style="width: 95%; border:none; background: transparent;" required> 
+              <input type="password" name="password" placeholder="Password" style="width: 95%; border:none; background: transparent;" required> 
             </div>
-            <button onclick="window.location.href = '/dashboard-admin'" class="btn w-100 bg-dark text-light" style="margin-top: 20px; border-radius: 20px;">Login</button>
+            <button class="btn w-100 bg-dark text-light" style="margin-top: 20px; border-radius: 20px;">Login</button>
+            <a href="/" class="btn w-100 bg-dark text-light" style="margin-top: 20px; border-radius: 20px;">Cancel</a>
           </form>
         </div>
       </div>
@@ -74,3 +85,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 </body>
 </html>
+

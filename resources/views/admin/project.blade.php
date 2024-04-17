@@ -112,34 +112,7 @@
 <body >
     <div class="wrapper mt-5" >
         <div class="dashboard-admin container-fluid d-flex justify-content-around">
-            <div class="kiri" style="width: 20%; padding: 20px;border-radius: 40px; background-color: white; height: 90vh;">
-                <div class="header-content d-flex justify-content-between w-100 p-2" style="border-bottom: 1px solid grey; ">
-                    <div class="header-kiri">
-                        <h3>Hello</h3>
-                        <h3><strong>Pratama</strong></h3>
-                    </div>
-                    <div class="header-kanan d-flex justify-content-center align-items-center">
-                        <img src="asset/Logo Suedespacec -01 1.png" alt="" style="height: 50px;">
-                    </div>
-                </div>
-                <nav class="sidebar py-2 mb-4">
-                    <ul class="nav flex-column" id="nav_accordion">
-                        <li class="nav-item has-submenu">
-                            <a class="nav-link" href="#"><i class="fa-solid fa-bars-progress" style="margin-right: 5px;"></i> <strong>Project</strong> <i class="fa-solid fa-caret-right"></i></a>
-                            <ul class="submenu collapse">
-                                <li><a class="nav-link" href="/project">Project Photo & video</a></li>
-                                <li><a class="nav-link" href="/project">Media social</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/tambah-admin"><i class="fa-solid fa-user" style="margin-right: 5px;"></i> <strong>Tambah Admin</strong></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/"><i class="fa-solid fa-right-from-bracket" style="margin-right: 5px;"></i><strong>Logout</strong> </a>
-                        </li>
-                    </ul>
-                    </nav>
-            </div>
+            @include('komponen/sidebar')
             <div class="kanan d-flex flex-column align-items-center" style="padding: 40px; padding-top: 50px; width: 75%; background-color: white; border-radius: 40px; ">
                 <div class="element1 d-flex" style="width: 90%; border-radius: 60px; box-shadow: -2px 5px 10px rgba(0, 0, 0, 0.5); padding: 50px;  padding-left: 0; padding-bottom: 100px;">
                     <div class="element1-kiri d-flex justify-content-center align-items-center" style="width: 100px; ">
@@ -149,7 +122,7 @@
                     <div class="element1-kanan w-100">
                         <h5><strong>Project Photo & Video</strong></h5>
                         <p>Create design for screens signin and sign up</p>
-                        <button onclick="window.location.href = '/upload-project'" class="btn bg-dark text-light" style="width: 300px; margin-top: 20px; border-radius: 20px;">Add Project</button>
+                        <button onclick="window.location.href = '/admin/upload-project'" class="btn bg-dark text-light" style="width: 300px; margin-top: 20px; border-radius: 20px;">Add Project</button>
 
                         <div class="container mt-5">
                             <div class="table-responsive">
@@ -158,69 +131,29 @@
                                   <tr>
                                     <th scope="col">No</th>
                                     <th scope="col">Project Name</th>
+                                    <th scope="col">Date</th>
                                     <th scope="col" style="text-align: center;">Pin</th>
                                     <th scope="col">Action</th>
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  <tr>
-                                    <th scope="row">1</th>
-                                    <td>Project 1</td>
-                                    <td style="text-align: center;">
-                                        <button class="btn btn-light custom-button" style="height: 25px; width: 25px; border-radius: 8px; border: 1px solid black;" id="myButton" data-bs-toggle="modal" data-bs-target="#confirmationModal">
-                                        </button>
-                                            <!-- Modal for Confirmation -->
-                                        <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        Anda yakin ingin menampilkannya di halaman utama?
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                                                        <button type="button" class="btn btn-primary" onclick="executeCode()">Yes</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                    </td>
-                                    <td>
-                                      <button class="btn btn-dark">Edit</button>
-                                      <button class="btn btn-dark">Delete</button>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <th scope="row">2</th>
-                                    <td>Project 2</td>
-                                    <td style="text-align: center;">
-                                        <button class="btn btn-dark custom-button" style="height: 25px; width: 25px; border-radius: 8px; border: 1px solid black;" id="myButton" data-bs-toggle="modal" data-bs-target="#confirmationModal">
-                                        </button>
-                                        <!-- Modal for Confirmation -->
-                                        <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        Anda yakin ingin menampilkannya di halaman utama?
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                                                        <button type="button" class="btn btn-primary" onclick="executeCode()">Yes</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                    </td>
-                                    <td>
-                                      <button class="btn btn-dark">Edit</button>
-                                      <button class="btn btn-dark">Delete</button>
-                                    </td>
-                                  </tr>
+                                    @foreach ($project as $index=>$p)
+                                        <tr>
+                                            <th scope="row">{{$index+1}}</th>
+                                            <td>{{$p->Project_Name}}</td>
+                                            <td>{{$p->created_at}}</td>
+                                            <td style="text-align: center;">
+                                                <a class="btn @if ($p->status == 1) btn-dark @else btn-light @endif custom-button" href="/admin/project/{{$p->Project_id}}/status" onclick="return confirm('Anda yakin ingin menampilkan project ini di halaman utama ?')" style="height: 25px; width: 25px; border-radius: 8px; border: 1px solid black;"></a>
+                                                </button>
+                                            </td>
+                                            <td>
+                                            <a class="btn btn-dark" href="/admin/project/{{$p->Project_id}}/edit">Edit</a>
+                                            <a class="btn btn-dark" href="/admin/project/{{$p->Project_id}}/delete" onclick="return confirm('Anda yakin ingin menghapus project ini ?')">Delete</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                  
+                                  
                                   
                                   
                                   <!-- Add more rows as needed -->

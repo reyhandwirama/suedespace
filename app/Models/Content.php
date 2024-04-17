@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Content extends Model
 {
     use HasFactory;
-    /* protected $table='list_content';
+    protected $table='list_content';
     protected $guarded =[];
-    protected $primaryKey = 'Content_Id'; */
 }

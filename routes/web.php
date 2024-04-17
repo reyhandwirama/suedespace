@@ -2,7 +2,11 @@
 
 /* use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProjectController; */
+
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContentController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,28 +39,35 @@ Route::get('/detail-work', function () {
     return view('detail-work');
 });
 
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get('/login', [SessionController::class,'index']);
 
-Route::get('/dashboard-admin', function () {
-    return view('dashboard-admin');
-});
+Route::get('/admin/dashboard-admin', [AdminController::class,'dashboard']);
 
 Route::get('/edit-admin', function () {
     return view('edit-admin');
 });
-Route::get('/project', function () {
-    return view('project');
+Route::get('/admin/project', function () {
+    return view('admin.project');
 });
 
-Route::get('/upload-project', function () {
-    return view('upload-project');
+Route::get('/admin/upload-project', function () {
+    return view('admin.upload-project');
 });
 
-Route::get('/tambah-admin', function () {
-    return view('tambah-admin');
-});
+Route::get('/admin/kelola-admin/{user_id}/edit',[AdminController::class,'edit']);
+Route::put('/admin/kelola-admin/{user_id}',[AdminController::class,'update']);
+Route::get('/admin/kelola-admin', [AdminController::class,'kelola']);
+Route::get('/admin/kelola-admin/create',[AdminController::class,'create']);
+Route::get('/admin/kelola-admin/store',[AdminController::class,'store']);
+Route::get('/admin/kelola-admin/{user_id}/delete',[AdminController::class,'delete']);
+Route::get('/admin/upload_project',[ProjectController::class,'uploadProject']);
+Route::get('/admin/project',[ProjectController::class,'listProject']);
+Route::get('/admin/project/{id}/status',[ProjectController::class,'updateStatus']);
+Route::post('/admin/upload-project/store',[ProjectController::class,'uploadProject']);
+Route::post('/admin/upload-content/{project_name}/upload',[ProjectController::class,'upload']);
+Route::get('/admin/project/{project_id}/delete',[ProjectController::class,'delete']);
+Route::post('/sesi/login',[SessionController::class,'login']);
+Route::get('/sesi/logout',[SessionController::class,'logout']);
 
 /* Route::get('/userAdmin',[AdminController::class,'index']);
 Route::get('/userAdmin/create',[AdminController::class,'create']);

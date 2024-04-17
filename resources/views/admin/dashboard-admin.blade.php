@@ -71,34 +71,7 @@
 <body >
     <div class="wrapper d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="dashboard-admin container-fluid d-flex justify-content-around">
-            <div class="kiri" style="width: 20%; padding: 20px;border-radius: 40px; background-color: white; height: 90vh;">
-                <div class="header-content d-flex justify-content-between w-100" style="border-bottom: 1px solid grey;">
-                    <div class="header-kiri">
-                        <h3>Hello</h3>
-                        <h3><strong>Pratama</strong></h3>
-                    </div>
-                    <div class="header-kanan d-flex justify-content-center align-items-center">
-                        <img src="asset/Logo Suedespacec -01 1.png" alt="" style="height: 50px;">
-                    </div>
-                </div>
-                <nav class="sidebar py-2 mb-4">
-                    <ul class="nav flex-column" id="nav_accordion">
-                        <li class="nav-item has-submenu">
-                            <a class="nav-link" href="#"><i class="fa-solid fa-bars-progress" style="margin-right: 5px;"></i> <strong>Project</strong> <i class="fa-solid fa-caret-right"></i></a>
-                            <ul class="submenu collapse">
-                                <li><a class="nav-link" href="/project">Project Photo & video</a></li>
-                                <li><a class="nav-link" href="/project">Media social</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/tambah-admin"><i class="fa-solid fa-user" style="margin-right: 5px;"></i> <strong>Tambah Admin</strong></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/"><i class="fa-solid fa-right-from-bracket" style="margin-right: 5px;"></i><strong>Logout</strong> </a>
-                        </li>
-                    </ul>
-                    </nav>
-            </div>
+            @include('komponen/sidebar')
             <div class="kanan d-flex flex-column align-items-center justify-content-around" style="width: 75%; padding: 100px; background-color: white; height: 90vh; border-radius: 40px;">
                 <div class="element1 d-flex" style="width: 70%; border-radius: 60px; box-shadow: -2px 5px 10px rgba(0, 0, 0, 0.5); padding: 50px;  padding-left: 0; padding-bottom: 70px; ">
                     <div class="element1-kiri d-flex justify-content-center align-items-center" style="width: 100px; ">
