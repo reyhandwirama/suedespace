@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admin - Suedespace</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+    <link rel="icon" href="/asset/Logo-Astronot.ico" type="image/x-icon">
 
     <link href="https://cdn.jsdelivr.net/npm/@icon/themify-icons@1.0.1-alpha.3/themify-icons.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
@@ -121,7 +122,7 @@
                     </div>
                     <div class="element1-kanan w-100">
                         <h5><strong>Project Photo & Video</strong></h5>
-                        <p>Create design for screens signin and sign up</p>
+                        <p>Uploading Photo Project</p>
                         <button onclick="window.location.href = '/admin/upload-project'" class="btn bg-dark text-light" style="width: 300px; margin-top: 20px; border-radius: 20px;">Add Project</button>
 
                         <div class="container mt-5">
@@ -147,16 +148,10 @@
                                                 </button>
                                             </td>
                                             <td>
-                                            <a class="btn btn-dark" href="/admin/project/{{$p->Project_id}}/edit">Edit</a>
                                             <a class="btn btn-dark" href="/admin/project/{{$p->Project_id}}/delete" onclick="return confirm('Anda yakin ingin menghapus project ini ?')">Delete</a>
                                             </td>
                                         </tr>
                                     @endforeach
-                                  
-                                  
-                                  
-                                  
-                                  <!-- Add more rows as needed -->
                                 </tbody>
                               </table>
                             </div>

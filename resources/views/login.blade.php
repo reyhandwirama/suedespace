@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login - Suedespace</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/@icon/themify-icons@1.0.1-alpha.3/themify-icons.min.css" rel="stylesheet">
+    <link rel="icon" href="asset/Logo-Astronot.ico" type="image/x-icon">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     
     <style>
@@ -54,7 +55,7 @@
       <div class="login-component d-flex" style="width: 50%;">
         <div class="kiri w-100" ></div>
         <div class="kanan w-100 d-flex flex-column bg-light align-items-center">
-          <h1 style="margin-left:30px;margin-bottom: 50px;margin-top: 25px;"><strong>LOGIN</strong></h1>
+          <h1 style="margin-bottom: 50px;margin-top: 25px;"><strong>LOGIN</strong></h1>
           @if ($errors->any())
             <div class="alert alert-danger m-2">
                 <ul>

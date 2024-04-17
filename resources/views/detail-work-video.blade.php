@@ -7,16 +7,39 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/@icon/themify-icons@1.0.1-alpha.3/themify-icons.min.css" rel="stylesheet">
-    <link rel="icon" href="asset/Logo-Astronot.ico" type="image/x-icon">
+    <link rel="icon" href="/asset/Logo-Astronot.ico" type="image/x-icon">
 
     <style>
-        @media (max-width: 991px) {
+        @media (max-width: 1100px){
+          iframe{
+            width: 200px;
+            height: 100px;
+          }
+        }
+        @media (max-width: 1300px) {
+          .second-content .container .first-row, .second-row{
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+          }
           .navbar-brand.position-absolute {
             position: static !important;
             left: auto !important;
             transform: none !important;
           }
+          iframe{
+            width: 500px;
+            height: 300px;
+          }
 
+          .kiri .body-header{
+            width: 100%;
+          }
+          
+          .middle-content .kiri{
+            margin: 0;  
+          }
           .collapse .ti{
             display: block;
             margin-left: 50px;
@@ -86,18 +109,11 @@
             width: 40%;
           }
 
-          .middle-content .kanan{
+          /* .middle-content .kanan{
             margin: 200px;
-          }
+          } */
         }
 
-        @media (max-width: 1400px) {
-          .second-content .container .first-row, .second-row{
-            flex-direction: column;
-            padding: 0;
-          }
-
-        }
         body{
             font-family: 'Poppins';font-size: 1.1rem;
             background-color: #010101;
@@ -128,23 +144,38 @@
     
       </style>
 
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+
+      navLinks.forEach(function(link) {
+        link.addEventListener("click", function() {
+          navLinks.forEach(function(innerLink) {
+            innerLink.classList.remove("active");
+          });
+          link.classList.add("active");
+        });
+      });
+    });
+    </script>
     
 </head>
 <body>
     @include('komponen/navbar')
 
     
-    <div class="middle-content container-fluid d-flex justify-content-center" style="margin-top:200px; margin-bottom:200px; color:white;">
-        <div class="kiri d-flex flex-column">
+    <div class="middle-content container-fluid d-flex justify-content-center" style=" margin-top:100px; margin-bottom:150px; color:white;">
+      <div class="kiri d-flex flex-column" style="width: 55%; margin:50px">
             <div class="header">
                 <h1><strong>{{$project->Project_Name}}</strong></h1>
             </div>
-            <div class="body-header" style="width: 80%; margin-top: 50px;">
-                <p>{{$project->Description}}</p>
+            <div class="body-header" style="width: 80%; margin-top:50px">
+                <p style="text-align: justify">{{$project->Description}}</p>
             </div>
-            <img src="/{{$project->filename}}" style="margin-top:100px" alt="">
+            <iframe width="760" height="415" name="iframe" src="https://www.youtube.com/embed/{{$project->url}}" frameborder="0" allowfullscreen allow="autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
         </div>
-        <div class="kanan">
+        <div class="kanan d-flex justify-content-center align-items-center"  style="width: 20%">
+          <div class="wrapping">
           @if (is_string($project->Type_Content))
               <?php
                   $dataArray = explode("%", $project->Type_Content);
@@ -162,32 +193,14 @@
                   <p><strong>{{ $title }}</strong></p>
                   <p>{{ $value }}</p>
               @endforeach
-          @else
-              <p>Error: Type_Content is not a string</p>
-          @endif
+            @else
+                <p>Error: Type_Content is not a string</p>
+            @endif
+          </div>
         </div>
         
     </div>
 
-    <div class="second-content" style="display:flex; flex-direction:column; align-items:center; margin-top: 300px; margin-bottom: 400px">
-        <div class="container">
-            <div class="gambar">
-              @foreach ($content as $index=>$c)
-                @if (($index % 3 === 0) || $index === 0)  <div class="container row-element justify-content-center d-flex align-items-center">
-                @else
-                @endif
-                  
-                <a href="{{$c->filename}}" target="_blank"><img src="{{$c->filename}}" alt="" style="margin:10px; max-height:400px;"></a>
-                @if ((($index + 1) % 3 === 0 && $index > 0))  </div>
-                @endif
-              @endforeach
-              
-              
-            </div>
-        </div>
-    </div>
-
-    
 
     <div class="footer d-flex bg-light justify-content-between align-items-center p-3" >
       <p style="margin-top:0; margin-bottom:0;">SuedeSpace - Jakarta selatan, No.012, IN</p>

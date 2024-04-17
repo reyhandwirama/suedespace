@@ -21,7 +21,7 @@ class ProjectController extends Controller
 
     public function listProject(){
         if(Auth::check()){
-            $project = Project::all();
+            $project = Project::where('Type','foto')->get();
             return view('admin.project',compact(['project']));
         }else{
             return redirect('/login');
@@ -37,7 +37,12 @@ class ProjectController extends Controller
                 $statusProject ->status =1;
             }
             $statusProject->save();
-            return redirect('/admin/project');
+            if($statusProject->type=='foto'){
+                return redirect('/admin/project');
+            }else{
+                return redirect('/admin/project/video');
+            }
+            
         }else{
             return redirect('/login');
         }
@@ -65,6 +70,7 @@ class ProjectController extends Controller
             $inputs[]=$fullinput;
         }
         $project->Type_Content = implode('%',$inputs);
+        $project->Type = 'foto';
         if($request->hasFile('foto')){
             $uploadPath = "uploads/Project/";
             $file = $request->file('foto');
@@ -73,7 +79,7 @@ class ProjectController extends Controller
             $file->move($uploadPath, $filename);
             $project->filename = $uploadPath.$filename;
         }
-
+        
         $project->save();
         return view('admin.another-image',compact(['request']));
         /* dd($request->hasFile('foto')); */
@@ -128,5 +134,64 @@ class ProjectController extends Controller
 
         dd($content);
     }
+
+    public function projectVideo(){
+        $project = Project::where('Type','video')->get();
+        return view('admin.project-video',compact(['project']));
+
+    }
+
+    public function uploadVideo(){
+        return view('admin.upload-project-video');
+    }
+
+    public function storeVideo(Request $request){
+        $project = new Project;
+        $project->Project_Name = $request->input("Project_Name");
+        $project->Description = $request->input("Description");
+        $project->status = 0;
+        $inputs=[];
+        for($i=0; $i<=(count($request->all())); $i++){
+            if($i == 0){
+                $inputname = $request->input("judul_desc");
+                $inputname1 = $request->input("deskripsi");
+            }else{
+                if($request->input("judul_desc$i")){
+                    $inputname = $request->input("judul_desc$i");
+                    $inputname1 = $request->input("deskripsi$i");
+                }else{
+                    break;
+                }   
+            }
+            $fullinput = $inputname.";".$inputname1;
+            $inputs[]=$fullinput;
+        }
+        $project->Type_Content = implode('%',$inputs);
+        $project->Type = 'video';
+        if($request->hasFile('foto')){
+            $uploadPath = "uploads/Project/";
+            $file = $request->file('foto');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move($uploadPath, $filename);
+            $project->filename = $uploadPath.$filename;
+        }
+        $project->url = $request->input("Project_Url");
+        $project->save();
+        return redirect("admin/project/video");
+    }
+
+    public function deleteVideo($project_id){
+        $project = Project::find($project_id);
+
+        if(File::exists($project->filename)){
+            File::delete($project->filename);
+        }
+            $project->delete();
+
+        return redirect('admin/project/video');
+
+    }
+
     //
 }

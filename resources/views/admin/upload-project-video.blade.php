@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admin - Suedespace</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
     <link rel="icon" href="asset/Logo-Astronot.ico" type="image/x-icon">
+
     <link href="https://cdn.jsdelivr.net/npm/@icon/themify-icons@1.0.1-alpha.3/themify-icons.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     
@@ -93,34 +94,7 @@
 <body >
     <div class="wrapper mt-5" >
         <div class="dashboard-admin container-fluid d-flex justify-content-around">
-            <div class="kiri" style="width: 20%; padding: 20px;border-radius: 40px; background-color: white; height: 90vh;">
-                <div class="header-content d-flex justify-content-between w-100 p-2" style="border-bottom: 1px solid grey; ">
-                    <div class="header-kiri">
-                        <h3>Hello</h3>
-                        <h3><strong>Pratama</strong></h3>
-                    </div>
-                    <div class="header-kanan d-flex justify-content-center align-items-center">
-                        <img src="asset/Logo Suedespacec -01 1.png" alt="" style="height: 50px;">
-                    </div>
-                </div>
-                <nav class="sidebar py-2 mb-4">
-                    <ul class="nav flex-column" id="nav_accordion">
-                        <li class="nav-item has-submenu">
-                            <a class="nav-link" href="#"><i class="fa-solid fa-bars-progress" style="margin-right: 5px;"></i> <strong>Project</strong> <i class="fa-solid fa-caret-right"></i></a>
-                            <ul class="submenu collapse">
-                                <li><a class="nav-link" href="project.php">Project Photo & video</a></li>
-                                <li><a class="nav-link" href="project.php">Media social</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="tambah-admin.php"><i class="fa-solid fa-user" style="margin-right: 5px;"></i> <strong>Tambah Admin</strong></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa-solid fa-right-from-bracket" style="margin-right: 5px;"></i><strong>Logout</strong> </a>
-                        </li>
-                    </ul>
-                    </nav>
-            </div>
+            @include('komponen/sidebar')
             <div class="kanan d-flex flex-column align-items-center" style="padding: 40px; padding-top: 50px; width: 75%; background-color: white; border-radius: 40px; ">
                 <div class="element1 d-flex" style="width: 90%; border-radius: 60px; box-shadow: -2px 5px 10px rgba(0, 0, 0, 0.5); padding: 50px;  padding-left: 0; padding-bottom: 100px;">
                     <div class="element1-kiri d-flex justify-content-center align-items-center" style="width: 100px; ">
@@ -128,28 +102,41 @@
                         
                     </div>
                     <div class="element1-kanan w-100">
-                        <h5><strong>Add Admin</strong></h5>
-                        <p>Create Akun Admin for Login</p>
-                        <form action="" id="myForm">
-                            <div class="input-grouping d-flex align-items-center" style="margin-bottom: 20px; margin-top: 50px;">
-                            <label for="" style="width: 150px;">Username</label>
-                            <input type="text" class="form-control">
+                        <h5><strong>Project Video</strong></h5>
+                        <p>Upload Project Video</p>
+                        <form action="/admin/upload-project/video/store" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="input-grouping d-flex align-items-center" style="margin-bottom: 20px;">
+                            <label for="Project_Name" style="width: 150px;">Judul Project</label>
+                            <input type="text" class="form-control" name="Project_Name" placeholder="Masukkan Judul Project">
                             </div>
                             <div class="input-grouping d-flex align-items-center" style="margin-bottom: 20px;">
-                                <label for="" style="width: 150px;">Password</label>
-                                <input type="text" class="form-control">
-                                </div>
-                            <div class="input-grouping d-flex align-items-center" style="margin-bottom: 20px;">
-                                <label for="" style="width: 150px;">Nama Admin</label>
-                                <input type="text" class="form-control">
+                            <label for="Description" style="width: 150px;">Deskripsi Project</label>
+                            <textarea type="textarea" class="form-control" name="Description" placeholder="Masukkan Deskripsi project"></textarea>
                             </div>
-                            
+                            <div class="deskripsi">
+                            <div class="input-group-deskripsi d-flex justify-content-between" style="margin-bottom: 20px;" id="deskripsi">
+                                    <input type="text" name="judul_desc" class="form-control" style="width: 18%; margin-right: 18px;" placeholder="Judul Deskripsi">
+                                    <input type="text" name="deskripsi" class="form-control" style="width: 90%;" placeholder="isi Deskripsi">
+                            </div>
+                            </div>
+                            <a onclick="duplicateInputGroup()" class="btn bg-dark text-light">Tambah Deskripsi</a>
+                            <div class="input-group-gambar d-flex justify-content-between" style="margin-top: 50px; margin-bottom:20px;">
+                                <label for="foto">Gambar Thumbnail</label>
+                                <input type="file" accept="image/png, image/jpeg" name="foto" id="foto">
+                            </div>
+                            <div class="input-grouping d-flex align-items-center" style="margin-bottom: 20px;">
+                                <label for="Project_Name" style="width: 150px;">Url Video</label>
+                                <input type="text" class="form-control" name="Project_Url" placeholder="Masukkan URL youtube Video">
+                            </div>
+                            <p>example : https://www.youtube.com/watch?v=<strong>DnqYe9R7LQw</strong>&t=1476s, (DnqYe9R7LQw -> Youtube Id)</p>
+                            <div class="wrapper d-flex w-100 justify-content-center" style="margin-top: 20px;">
+                            <button  type="submit" class="btn bg-dark text-light p-3" style="width: 25%; margin-top: 20px; border-radius: 20px;">Save Project</button>
+                            </div>
                             
                         </form>
                         
-                        <div class="wrapper d-flex w-100 justify-content-end" style="margin-top: 10px;">
-                        <button class="btn bg-dark text-light" style="width: 200px; height: 50px; margin-top: 50px; border-radius: 20px;">Simpan Akun</button>
-                    </div>
+                        
                     </div>
                     
                 </div>
@@ -162,63 +149,29 @@
     <script>
     
     function duplicateInputGroup() {
-    const originalInputGroup = document.querySelector('.input-group-deskripsi');
-    const clonedInputGroup = originalInputGroup.cloneNode(true);
+  const originalInputGroup = document.querySelector('.input-group-deskripsi');
+  const clonedInputGroup = originalInputGroup.cloneNode(true);
 
-    // Clear the input values in the cloned element
-    clonedInputGroup.querySelectorAll('input').forEach((input) => {
-      input.value = '';
-    });
-
-    // Append the cloned element after the original
-    originalInputGroup.parentNode.insertBefore(clonedInputGroup, originalInputGroup.nextSibling);
-  }
-
-  document.getElementById('myForm').addEventListener('submit', function (event) {
-        // Prevent the default form submission behavior
-        event.preventDefault();
-
-        // Add any additional custom logic here if needed
-
-        // Perform form submission or any other action as needed
-    });
-    
-    document.addEventListener('DOMContentLoaded', () => {
-    const dropArea = document.getElementById('drop-area');
-    const fileInput = document.getElementById('file-input');
-    const fileList = document.getElementById('file-list');
-
-    dropArea.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      dropArea.classList.add('highlight');
-    });
-
-    dropArea.addEventListener('dragleave', () => {
-      dropArea.classList.remove('highlight');
-    });
-
-    dropArea.addEventListener('drop', (e) => {
-      e.preventDefault();
-      dropArea.classList.remove('highlight');
-
-      const files = e.dataTransfer.files;
-      handleFiles(files);
-    });
-
-    fileInput.addEventListener('change', () => {
-      const files = fileInput.files;
-      handleFiles(files);
-    });
-
-    function handleFiles(files) {
-      for (const file of files) {
-        const listItem = document.createElement('li');
-        listItem.className = 'list-group-item';
-        listItem.textContent = file.name;
-        fileList.appendChild(listItem);
-      }
-    }
+  // Clear the input values in the cloned element
+  clonedInputGroup.querySelectorAll('input').forEach((input) => {
+    input.value = '';
   });
+
+  // Increment names of cloned input elements
+  const inputCount = document.querySelectorAll('.input-group-deskripsi').length-1; // Get existing count
+  const incrementSuffix = inputCount ? inputCount + 1 : 1; // Start at 1 or existing count + 1
+
+  clonedInputGroup.querySelectorAll('input[type="text"]').forEach((input) => {
+    const originalName = input.name;
+    const newName = originalName ? `${originalName}${incrementSuffix}` : `judul_desc${incrementSuffix}`; // Handle existing and new inputs
+    input.setAttribute('name', newName);
+  });
+
+  // Append the cloned group to the container (modify as needed)
+  const container = document.querySelector('.deskripsi'); // Replace with your selector
+  container.appendChild(clonedInputGroup);
+    }
+
       </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>

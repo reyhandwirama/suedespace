@@ -6,6 +6,7 @@
     <title>SuedeSpace</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="icon" href="asset/Logo-Astronot.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/@icon/themify-icons@1.0.1-alpha.3/themify-icons.min.css" rel="stylesheet">
     <style>
         @media (max-width: 991px) {
@@ -100,31 +101,31 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-light fixed-top">
-        <div class="container-fluid">
-          <a class="navbar-brand" style="left: 80px;" href="#">
-            <img src="./asset/Logo Suedespacec -01 1.png" style="width: 100px;" alt="">
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav m-auto mb-2 mb-lg-0">
-              <li class="nav-item" style="margin-right:50px;margin-left:50px">
-                <a class="nav-link active" aria-current="page" href="#">Intro</a>
-              </li>
-              <li class="nav-item" style="margin-right:50px;margin-left:50px">
-                <a class="nav-link" href="/about">About</a>
-              </li>
-              <li class="nav-item" style="margin-right:50px;margin-left:50px">
-                <a class="nav-link" href="/work">Work</a>
-              </li>
-            </ul>
+  <nav class="navbar navbar-expand-lg bg-light fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" style="left: 80px;" href="#">
+        <img src="/asset/Logo Suedespacec -01 1.png" style="width: 100px;" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+          <li class="nav-item" style="margin-right:50px;margin-left:50px">
+            <a class="nav-link active" aria-current="page" href="#">Intro</a>
+          </li>
+          <li class="nav-item" style="margin-right:50px;margin-left:50px">
+            <a class="nav-link" href="/about">About</a>
+          </li>
+          <li class="nav-item" style="margin-right:50px;margin-left:50px">
+            <a class="nav-link" href="/work">Work</a>
+          </li>
+        </ul>
 
-            <a href="/login" style="text-decoration: none; color:black;"><i class="ti ti-user" style="margin-right: 20px; margin-left: 50px;"></i></a>
-          </div>
-        </div>
-    </nav>
+        <a href="/login" style="text-decoration: none; color:black;"><i class="ti ti-user" style="margin-right: 20px; margin-left: 50px;"></i></a>
+      </div>
+    </div>
+</nav>
 
     <div class="top-content ">
         <img src="./asset/Main Page_Banner top.png" alt="" class="img-fluid" style="width: 100%;">
@@ -141,25 +142,21 @@
       </div>
       <div class="d-flex justify-content-center">
         <div class="gambar">
-          <div class="row-element d-flex align-items-center">
-          <a href="/detail-work"><img src="./asset/rafael-romero-6F9KWbQFQ44-unsplash.png" alt="" style="margin:10px"></a>
-          <a href="/detail-work"><img src="./asset/alex-ware-O4QwznYbK1E-unsplash.png" alt="" style="margin:10px"></a>
-          <a href="/detail-work"><img src="./asset/cesar-rincon-XHVpWcr5grQ-unsplash.png" alt="" style="margin:10px"></a>
-          </div>
-          <div class="row-element d-flex align-items-center">
-          <a href="/detail-work"><img src="./asset/drake-s-takes-vKnRYW-mtek-unsplash.png" alt="" style="margin:10px"></a>
-          <a href="/detail-work"><img src="./asset/ivana-cajina-_7LbC5J-jw4-unsplash.png" alt="" style="margin:10px"></a>
-          <a href="/detail-work"><img src="./asset/maksym-tymchyk-cetn_UpJNDw-unsplash.png" alt="" style="margin:10px"></a>
-          </div>
-
-
+          @foreach ($project as $index=>$c)
+            @if (($index % 3 === 0) || $index === 0)  <div class="container row-element d-flex align-items-center">
+            @endif
+              
+            <a href="/detail-work/{{$c->Project_Name}}/view"><img src="{{$c->filename}}" alt="" style="margin:10px; max-height:400px;"></a>
+            @if ((($index + 1) % 3 === 0 && $index > 0))  </div>
+            @endif
+          @endforeach
         </div>
+      </div>
     </div>
       <div class="button-navigasi container" style="padding: 15px; background-color:yellow; display: flex; align-items: center; justify-content: space-between; width:250px; border-radius:50px; margin-top: 200px; margin-bottom:200px">
         <h4 style="position: relative; top: 5px;">View Project</h4>
         <a href="/work" style="text-decoration: none;"><h4 style="position: relative; top:5px; padding:10px; background-color: black; border-radius: 50%; width: 50px; height: 50px; color: white; display: flex; justify-content: center; align-items:center;" >></h4></a>
       </div>
-    </div>
 
     <div class="footer d-flex bg-light justify-content-between align-items-center p-3" >
       <p style="margin-top:0; margin-bottom:0;">SuedeSpace - Jakarta selatan, No.012, IN</p>

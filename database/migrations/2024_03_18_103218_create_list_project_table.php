@@ -17,7 +17,9 @@ return new class extends Migration
             $table->string('Project_Name',100)->unique();
             $table->string('Description',500);
             $table->string('Type_Content')->nullable();
+            $table->string('Type')->nullable();
             $table->string('filename')->nullable();
+            $table->string('url')->nullable();
             $table->string('status',1)->nullable(); 
             $table->timestamps();
         });

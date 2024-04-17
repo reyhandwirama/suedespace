@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
     <link rel="icon" href="asset/Logo-Astronot.ico" type="image/x-icon">
+
     <link href="https://cdn.jsdelivr.net/npm/@icon/themify-icons@1.0.1-alpha.3/themify-icons.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     
@@ -30,7 +31,7 @@
         }
        body{
             font-family: 'Roboto', sans-serif;font-size: 1.1rem;
-            background-color: #F0F0F0;
+            background-color: #F0F0F0 ;
         }
         .sidebar li .submenu{ 
             list-style: none; 
@@ -55,6 +56,25 @@
 
         #drop-area.highlight {
         border-color: #007bff;
+        }
+
+
+          /* Custom styles for the checkbox */
+        .custom-checkbox input[type="checkbox"] {
+        display: none; /* Hide the default checkbox */
+        }
+
+        .custom-checkbox label {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #000;
+        border-radius: 5px;
+        cursor: pointer;
+        }
+
+        .custom-checkbox input[type="checkbox"]:checked + label {
+        background-color: #000; /* Change background color when checked */
         }
       </style>
 
@@ -102,36 +122,45 @@
                     </div>
                     <div class="element1-kanan w-100">
                         <h5><strong>Project Photo & Video</strong></h5>
-                        <p>Create design for screens signin and sign up</p>
-                        <form action="/admin/upload-project/store" id="myForm" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div class="input-grouping d-flex align-items-center" style="margin-bottom: 20px;">
-                            <label for="" style="width: 150px;">Judul Project</label>
-                            <input type="text" class="form-control" name="Project_Name" placeholder="Masukkan Judul Project">
-                            </div>
-                            <div class="input-grouping d-flex align-items-center" style="margin-bottom: 20px;">
-                            <label for="" style="width: 150px;">Deskripsi Project</label>
-                            <textarea type="textarea" class="form-control" name="Description" placeholder="Masukkan Deskripsi Project"></textarea>
-                            </div>
-                            <div class="deskripsi">
-                            <div class="input-group-deskripsi d-flex justify-content-between" style="margin-bottom: 20px;" id="deskripsi">
-                                    <input type="text" name="judul_desc" class="form-control" style="width: 18%; margin-right: 18px;" placeholder="Judul Deskripsi">
-                                    <input type="text" name="deskripsi" class="form-control" style="width: 90%;" placeholder="isi Deskripsi">
-                            </div>
-                            </div>
-                            <a onclick="duplicateInputGroup()" class="btn bg-dark text-light">Tambah Deskripsi</a>
-                            <div class="input-group-gambar d-flex justify-content-between" style="margin-top: 50px;">
-                                <label for="foto">Gambar Utama</label>
-                                <input type="file" accept="image/png, image/jpeg" name="foto" id="foto">
-                            </div>
+                        <p>Uploading Photo Project</p>
+                        <button onclick="window.location.href = '/admin/upload-project'" class="btn bg-dark text-light" style="width: 300px; margin-top: 20px; border-radius: 20px;">Add Project</button>
 
-                            <div class="wrapper d-flex w-100 justify-content-center" style="margin-top: 20px;">
-                            <button  type="submit" class="btn bg-dark text-light p-3" style="width: 50%; margin-top: 20px; border-radius: 20px;">Save Project and Add Another Image</button>
+                        <div class="container mt-5">
+                            <div class="table-responsive">
+                              <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">No</th>
+                                    <th scope="col">Project Name</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col" style="text-align: center;">Pin</th>
+                                    <th scope="col">Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($project as $index=>$p)
+                                        <tr>
+                                            <th scope="row">{{$index+1}}</th>
+                                            <td>{{$p->Project_Name}}</td>
+                                            <td>{{$p->created_at}}</td>
+                                            <td style="text-align: center;">
+                                                <a class="btn @if ($p->status == 1) btn-dark @else btn-light @endif custom-button" href="/admin/project/{{$p->Project_id}}/status" onclick="return confirm('Anda yakin ingin menampilkan project ini di halaman utama ?')" style="height: 25px; width: 25px; border-radius: 8px; border: 1px solid black;"></a>
+                                                </button>
+                                            </td>
+                                            <td>
+                                            <a class="btn btn-dark" href="/admin/project/{{$p->Project_id}}/delete" onclick="return confirm('Anda yakin ingin menghapus project ini ?')">Delete</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                  
+                                  
+                                  
+                                  
+                                  <!-- Add more rows as needed -->
+                                </tbody>
+                              </table>
                             </div>
-                            
-                        </form>
-                        
-                        
+                          </div>
                     </div>
                     
                 </div>
@@ -140,33 +169,30 @@
             </div>
         </div>
     </div>
-
-    <script>
     
-    function duplicateInputGroup() {
-  const originalInputGroup = document.querySelector('.input-group-deskripsi');
-  const clonedInputGroup = originalInputGroup.cloneNode(true);
+    
+    </div>
+    <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const myButton = document.getElementById("myButton");
+                
+                myButton.addEventListener("click", function () {
+                    // Add the "clicked" class to change background color
+                    myButton.classList.add("clicked");
+                });
+            });
 
-  // Clear the input values in the cloned element
-  clonedInputGroup.querySelectorAll('input').forEach((input) => {
-    input.value = '';
-  });
+            function executeCode() {
+                // Your code to execute when 'Yes' is clicked
+                alert("Executing your code...");
 
-  // Increment names of cloned input elements
-  const inputCount = document.querySelectorAll('.input-group-deskripsi').length-1; // Get existing count
-  const incrementSuffix = inputCount ? inputCount + 1 : 1; // Start at 1 or existing count + 1
+                // You can add more code here to perform actions after confirmation
 
-  clonedInputGroup.querySelectorAll('input[type="text"]').forEach((input) => {
-    const originalName = input.name;
-    const newName = originalName ? `${originalName}${incrementSuffix}` : `judul_desc${incrementSuffix}`; // Handle existing and new inputs
-    input.setAttribute('name', newName);
-  });
-
-  // Append the cloned group to the container (modify as needed)
-  const container = document.querySelector('.deskripsi'); // Replace with your selector
-  container.appendChild(clonedInputGroup);
-    }
-
+                // Close the modal
+                const modal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+                modal.hide();
+            }
+    
       </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
