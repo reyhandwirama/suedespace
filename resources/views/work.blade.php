@@ -205,7 +205,8 @@
 
           <div class="container-fluid category d-flex flex-wrap justify-content-center" style="color:white; max-width: 100%; margin-bottom: 50px;">
             @foreach ($projectVideo as $item)
-                <a href="/detail-work/video/{{$item->Project_id}}/view" style="text-decoration: none;"><div class="card bg-black" style="width: 20rem; color:white; margin: 10px;">
+                <a href="/detail-work/video/{{$item->Project_id}}/view" style="text-decoration: none;">
+                  <div class="card bg-dark" style="width: 20rem; color:white; margin: 10px;">
                   <img src="{{$item->filename}}" class="card-img-top" alt="image card" style="max-height: 200px; background-size: cover;">
                   <div class="card-body">
                   <p style="color:yellow;">{{$item->Project_Name}}</p>

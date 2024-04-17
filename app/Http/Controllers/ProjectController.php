@@ -14,10 +14,6 @@ use Storage; // Laravel's storage facade
 
 class ProjectController extends Controller
 {
-    public function index(){
-        $project = Project::all();
-        dd($project);
-       }
 
     public function listProject(){
         if(Auth::check()){
@@ -49,6 +45,9 @@ class ProjectController extends Controller
     }
 
     public function uploadProject(Request $request){
+        if(Auth::check()==false){
+            return redirect('/login');
+        }
         $project = new Project;
         $project->Project_Name = $request->input('Project_Name');
         $project->Description = $request->input('Description');
@@ -86,6 +85,9 @@ class ProjectController extends Controller
     }
 
     public function upload($project_name,Request $request){
+        if(Auth::check()==false){
+            return redirect('/login');
+        }
         $project_id = Project::where('Project_Name',$project_name)->first();
         if($request->hasFile('file')){
 
@@ -113,6 +115,9 @@ class ProjectController extends Controller
     }
 
     public function delete($project_id){
+        if(Auth::check()==false){
+            return redirect('/login');
+        }
         $project = Project::find($project_id);
         $content = Content::where('Project_Id',$project_id)->get();
         if(File::exists($project->filename)){
@@ -136,16 +141,25 @@ class ProjectController extends Controller
     }
 
     public function projectVideo(){
+        if(Auth::check()==false){
+            return redirect('/login');
+        }
         $project = Project::where('Type','video')->get();
         return view('admin.project-video',compact(['project']));
 
     }
 
     public function uploadVideo(){
+        if(Auth::check()==false){
+            return redirect('/login');
+        }
         return view('admin.upload-project-video');
     }
 
     public function storeVideo(Request $request){
+        if(Auth::check()==false){
+            return redirect('/login');
+        }
         $project = new Project;
         $project->Project_Name = $request->input("Project_Name");
         $project->Description = $request->input("Description");
@@ -182,6 +196,9 @@ class ProjectController extends Controller
     }
 
     public function deleteVideo($project_id){
+        if(Auth::check()==false){
+            return redirect('/login');
+        }
         $project = Project::find($project_id);
 
         if(File::exists($project->filename)){
