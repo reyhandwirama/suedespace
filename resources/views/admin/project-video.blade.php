@@ -144,7 +144,7 @@
                                             <th scope="row">{{$index+1}}</th>
                                             <td>{{$p->Project_Name}}</td>
                                             <td>{{$p->created_at}}</td>
-                                            <td><a class="btn btn-dark" href="{{$p->url }}" target="_blank"> Click Here</a></td>
+                                            <td><a class="btn btn-dark" href="https://www.youtube.com/watch?v={{$p->url }}" target="_blank"> Click Here</a></td>
                                             <td style="text-align: center;">
                                                 <a class="btn @if ($p->status == 1) btn-dark @else btn-light @endif custom-button" href="/admin/project/{{$p->Project_id}}/status" onclick="return confirm('Anda yakin ingin menampilkan project ini di halaman utama ?')" style="height: 25px; width: 25px; border-radius: 8px; border: 1px solid black;"></a>
                                                 </button>

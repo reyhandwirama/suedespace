@@ -75,7 +75,7 @@ class AdminTableSeeder extends Seeder
             'filename'=>'uploads/Project/detail-work.png',
             'Type_content'=> 'FORMAT;Actor Photoshoot%COLLABORATION;Ganindra Bimo%DATE;18-9-2023%CAMERA;Fujifilm GFX 50R',
             'status'=>1,
-            'url'=>'https://www.youtube.com/watch?v=DnqYe9R7LQw&t=566s',
+            'url'=>'DnqYe9R7LQw',
         ],[
             'Project_id' => 5,
             'Project_name' => 'Video 2',
@@ -84,7 +84,7 @@ class AdminTableSeeder extends Seeder
             'filename'=>'uploads/Project/detail-work.png',
             'Type_content'=> 'FORMAT;Actor Photoshoot%COLLABORATION;Ganindra Bimo%DATE;18-9-2023%CAMERA;Fujifilm GFX 50R',
             'status'=>1,
-            'url'=>'https://www.youtube.com/watch?v=DnqYe9R7LQw&t=566s',
+            'url'=>'DnqYe9R7LQw',
         ],[
             'Project_id' => 6,
             'Project_name' => 'Video 3',
@@ -93,7 +93,7 @@ class AdminTableSeeder extends Seeder
             'filename'=>'uploads/Project/detail-work.png',
             'Type_content'=> 'FORMAT;Actor Photoshoot%COLLABORATION;Ganindra Bimo%DATE;18-9-2023%CAMERA;Fujifilm GFX 50R',
             'status'=>1,
-            'url'=>'https://www.youtube.com/watch?v=DnqYe9R7LQw&t=566s',
+            'url'=>'DnqYe9R7LQw',
         ],]);
 
     }
