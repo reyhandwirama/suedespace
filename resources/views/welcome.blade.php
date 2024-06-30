@@ -145,7 +145,7 @@
           @foreach ($project as $index=>$c)
             @if (($index % 3 === 0) || $index === 0)  <div class="container row-element d-flex align-items-center">
             @endif
-              
+
             <a href="/detail-work/{{$c->Project_Name}}/view"><img src="{{$c->filename}}" alt="" style="margin:10px; max-height:400px;"></a>
             @if ((($index + 1) % 3 === 0 && $index > 0))  </div>
             @endif
@@ -158,14 +158,7 @@
         <a href="/work" style="text-decoration: none;"><h4 style="position: relative; top:5px; padding:10px; background-color: black; border-radius: 50%; width: 50px; height: 50px; color: white; display: flex; justify-content: center; align-items:center;" >></h4></a>
       </div>
 
-    <div class="footer d-flex bg-light justify-content-between align-items-center p-3" >
-      <p style="margin-top:0; margin-bottom:0;">SuedeSpace - Jakarta selatan, No.012, IN</p>
-      <div class="element-kanan">
-        <a href=""><img src="/asset/Vector.png" alt=""></a>
-        <a href=""><img src="/asset/Vector-1.png" alt=""></a>
-        <a href=""><img src="/asset/Vector-2.png" alt=""></a>
-      </div>
-    </div>
+      @include('komponen/footer')
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>

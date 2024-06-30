@@ -17,6 +17,10 @@
             transform: none !important;
           }
 
+          .container-foto{
+            flex-direction: column;
+            align-items: center;
+          }
           .collapse .ti{
             display: block;
             margin-left: 50px;
@@ -60,11 +64,11 @@
           .top-content .content h2{
             width: 60%;
           }
-          
+
           .top-content .content p{
             width: 40%;
           }
-          
+
           .category .kanan{
             width:100%;
           }
@@ -117,7 +121,7 @@
           height: 30px;
           margin: 5px;
         }
-        
+
         .top-content {
           position: relative;
         }
@@ -136,7 +140,7 @@
           z-index: -1; /* Place the overlay behind the content */
         }
 
-    
+
       </style>
 
     <script>
@@ -153,7 +157,7 @@
       });
     });
     </script>
-    
+
 </head>
 <body>
   <nav class="navbar navbar-expand-lg bg-light fixed-top">
@@ -189,7 +193,7 @@
       <p style="width: 50%;">{{$contentlast->Description}}</p>
     </div>
     </div>
-    
+
     <div class="middle-content" style="display:flex; flex-direction:column; align-items:center; margin-top:200px; ">
         <div class="content-header" style="color:white; display:flex; flex-direction: column; align-items: center;">
             <h2 style="margin-bottom:20px; ">PODCAST</h2>
@@ -199,15 +203,15 @@
             <h2 style="padding:0 10% 0 10%; margin-bottom:50px"><strong>Podcast with some friends?
               no problem, we can handle it
               sit back and have fun in your podcast</strong></h2>
-            <p style="padding:0 15% 0 15%; margin-bottom:200px">We will definitely made you feel relaxed and enjoying your podcast while you talk about funny things you’ve done in the past with your friends dying in laughter. 
+            <p style="padding:0 15% 0 15%; margin-bottom:200px">We will definitely made you feel relaxed and enjoying your podcast while you talk about funny things you’ve done in the past with your friends dying in laughter.
               Trust me, our crew will handle it like no other</p>
           </div>
 
-          <div class="container-fluid category d-flex flex-wrap justify-content-center" style="color:white; max-width: 100%; margin-bottom: 50px;">
+          <div class="container-fluid category d-flex flex-wrap justify-content-center container-foto" style="color:white; max-width: 100%; margin-bottom: 50px;">
             @foreach ($projectVideo as $item)
                 <a href="/detail-work/video/{{$item->Project_id}}/view" style="text-decoration: none;">
                   <div class="card bg-dark" style="width: 20rem; color:white; margin: 10px;">
-                  <img src="{{$item->filename}}" class="card-img-top" alt="image card" style="max-height: 200px; background-size: cover;">
+                  <img src="{{$item->filename}}" class="card-img-top" alt="image card" style="height: 200px; background-size: cover;">
                   <div class="card-body">
                   <p style="color:yellow;">{{$item->Project_Name}}</p>
                   <p class="card-text" class="myParagraph" style="text-align:justify;">{{$item->Description}}</p>
@@ -228,31 +232,24 @@
             @if (($index % 3 === 0) || $index === 0)  <div class="container row-element d-flex align-items-center">
             @else
             @endif
-              
+
             <a href="/detail-work/{{$c->Project_Name}}/view"><img src="{{$c->filename}}" alt="" style="margin:10px; max-height:400px;"></a>
             @if ((($index + 1) % 3 === 0 && $index > 0))  </div>
             @endif
           @endforeach
-              
-              
+
+
             </div>
         </div>
     </div>
-    
 
-    <div class="footer d-flex bg-light justify-content-between align-items-center p-3" >
-      <p style="margin-top:0; margin-bottom:0;">SuedeSpace - Jakarta selatan, No.012, IN</p>
-      <div class="element-kanan">
-        <a href=""><img src="/asset/Vector.png" alt=""></a>
-        <a href=""><img src="/asset/Vector-1.png" alt=""></a>
-        <a href=""><img src="/asset/Vector-2.png" alt=""></a>
-      </div>
-    </div>
+
+   @include('komponen/footer')
 
     <script>
       const paragraph = document.getElementByClassName('myParagraph');
       const maxLength = 120; // Adjust for desired character limit
-    
+
       if (paragraph.textContent.length > maxLength) {
         paragraph.textContent = paragraph.textContent.substring(0, maxLength) + '...';
       }

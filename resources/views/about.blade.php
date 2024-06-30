@@ -48,7 +48,7 @@
             flex-direction: column;
           }
 
-          
+
           .category .kanan{
             width:100%;
           }
@@ -98,7 +98,7 @@
           height: 30px;
           margin: 5px;
         }
-        
+
         .top-content .kiri {
           background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent),url('asset/Logo-Astronot.png');
           background-size: cover;
@@ -148,7 +148,7 @@
             right: 0;
             bottom: 0;
             left: 0;
-            background: 
+            background:
               linear-gradient(to top, rgba(0, 0, 0, 1), transparent), /* Top gradient */
               linear-gradient(to right, rgba(0, 0, 0, 1), transparent), /* Right gradient */
               url('asset/media-social.png'); /* Image */
@@ -156,7 +156,7 @@
             filter: brightness(250%);
             z-index: -1; /* Place the overlay behind the content */
           }
-          
+
           .sosmed img{
             max-height: 80px;
           }
@@ -176,7 +176,7 @@
       });
     });
     </script>
-    
+
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-light fixed-top">
@@ -212,7 +212,7 @@
             <p style="color:white; padding: 30px;">Lorem ipsum dolor sit amet consectetur. Quisque aliquam tempus sed eget habitasse. Sit est lorem risus amet enim neque lacus. Eget purus at lacus varius et tempor. Lacus arcu massa nulla eget amet. Amet mattis convallis blandit curabitur scelerisque ac. Lorem ipsum dolor sit amet consectetur. Quisque aliquam tempus sed eget habitasse. Sit est lorem risus amet enim neque lacus. Eget purus at lacus varius et tempor. Lacus arcu massa nulla eget amet. Amet mattis convallis blandit curabitur scelerisque ac.</p>
         </div>
     </div>
-    
+
     <div class="middle-content" style="display:flex; flex-direction:column; align-items:center; margin-top:200px; ">
         <div class="content-header" style="color:white; display:flex; flex-direction: column; align-items: center;">
             <h2 style="margin-bottom:20px; ">PHOTO & VIDEO STUDIO</h2>
@@ -229,7 +229,7 @@
               <div class="wrap d-flex flex-column h-100 justify-content-around p-3" style="margin-left: 30px;">
               <h3 style="margin-top: -100px;"><strong>Photo Studio</strong></h3>
               <p>We provide indoor Photo studio
-                with the best gear and equipment to capture your photoshoot and 
+                with the best gear and equipment to capture your photoshoot and
                 visual needs </p>
               </div>
             </div>
@@ -262,7 +262,7 @@
                 </div>
               </div>
             </div>
-          
+
         </div>
     </div>
 
@@ -274,19 +274,12 @@
         <a href=""><div class="circle " style="padding: 20px; border-radius: 100%; background-color: #1E1E1E;"><img src="asset/Facebook_Logo.png" alt=""></div></a>
         <a href=""><div class="circle " style="padding: 20px; border-radius: 100%; background-color: #1E1E1E;"><img src="asset/instagram-logo.png" alt=""></div></a>
         <a href=""><div class="circle " style="padding: 30px; border-radius: 100%; background-color: #1E1E1E;"><img src="asset/youtube-logo.png" alt="" style="height: 60px; width: 60px;"></div></a>
-      </div> 
-        
-    </div>
-      
-
-    <div class="footer d-flex bg-light justify-content-between align-items-center p-3" >
-      <p style="margin-top:0; margin-bottom:0;">SuedeSpace - Jakarta selatan, No.012, IN</p>
-      <div class="element-kanan">
-        <a href=""><img src="/asset/Vector.png" alt=""></a>
-        <a href=""><img src="/asset/Vector-1.png" alt=""></a>
-        <a href=""><img src="/asset/Vector-2.png" alt=""></a>
       </div>
+
     </div>
+
+
+    @include('komponen/footer')
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
