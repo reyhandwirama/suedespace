@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/@icon/themify-icons@1.0.1-alpha.3/themify-icons.min.css" rel="stylesheet">
     <link rel="icon" href="asset/Logo-Astronot.ico" type="image/x-icon">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    
+
     <style>
 
       @media (max-width: 991px) {
@@ -26,7 +26,7 @@
         .login-component .kanan{
           border-radius: 0 10px 10px 0;
         }
-        
+
       }
        body{
             font-family: 'Poppins';font-size: 1.1rem;
@@ -45,10 +45,10 @@
         outline: none; /* Remove the default focus outline */
         border-color: transparent; /* Set border color to transparent */
       }
-        
+
       </style>
 
-    
+
 </head>
 <body >
     <div class="login-form d-flex justify-content-center align-items-center vh-100">
@@ -69,11 +69,11 @@
             @csrf
             <div class="username d-flex w-100 p-2 justify-content-center align-items-center bg-light" style="border: 1px solid black; border-radius: 10px; margin-bottom: 20px;">
               <i class="fa fa-user" style="width: 20px;"></i>
-              <input type="text" name="username" value="{{Session::get('username')}}" placeholder="Username" style="width: 95%; border:none; background: transparent;" required> 
+              <input type="text" name="username" value="{{Session::get('username')}}" placeholder="Username" style="width: 95%; border:none; background: transparent;" required>
             </div>
             <div class="password d-flex w-100 p-2 justify-content-center align-items-center bg-light" style="border: 1px solid black; border-radius: 10px; margin-bottom: 20px;">
               <i class="fa fa-key" style="width: 20px;"></i>
-              <input type="password" name="password" placeholder="Password" style="width: 95%; border:none; background: transparent;" required> 
+              <input type="password" name="password" placeholder="Password" style="width: 95%; border:none; background: transparent;" required>
             </div>
             <button class="btn w-100 bg-dark text-light" style="margin-top: 20px; border-radius: 20px;">Login</button>
             <a href="/" class="btn w-100 bg-dark text-light" style="margin-top: 20px; border-radius: 20px;">Cancel</a>

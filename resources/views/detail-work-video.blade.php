@@ -36,9 +36,9 @@
           .kiri .body-header{
             width: 100%;
           }
-          
+
           .middle-content .kiri{
-            margin: 0;  
+            margin: 0;
           }
           .collapse .ti{
             display: block;
@@ -86,7 +86,7 @@
             align-self: start;
 
           }
-          
+
           .middle-content .gambar .first-row, .second-row{
             flex-direction: column;
             padding: 0;
@@ -104,7 +104,7 @@
           .top-content .content h2{
             width: 60%;
           }
-          
+
           .top-content .content p{
             width: 40%;
           }
@@ -123,7 +123,7 @@
           height: 30px;
           margin: 5px;
         }
-        
+
         .top-content {
           position: relative;
         }
@@ -141,7 +141,7 @@
           z-index: -1; /* Place the overlay behind the content */
         }
 
-    
+
       </style>
 
     <script>
@@ -158,12 +158,12 @@
       });
     });
     </script>
-    
+
 </head>
 <body>
     @include('komponen/navbar')
 
-    
+
     <div class="middle-content container-fluid d-flex justify-content-center" style=" margin-top:100px; margin-bottom:150px; color:white;">
       <div class="kiri d-flex flex-column" style="width: 55%; margin:50px">
             <div class="header">
@@ -198,7 +198,7 @@
             @endif
           </div>
         </div>
-        
+
     </div>
 
 

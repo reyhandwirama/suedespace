@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/@icon/themify-icons@1.0.1-alpha.3/themify-icons.min.css" rel="stylesheet">
-    <link rel="icon" href="asset/Logo-Astronot.ico" type="image/x-icon">
+    <link rel="icon" href="/asset/Logo-Astronot.ico" type="image/x-icon">
 
     <style>
         @media (max-width: 991px) {
@@ -63,7 +63,7 @@
             align-self: start;
 
           }
-          
+
           .middle-content .gambar .first-row, .second-row{
             flex-direction: column;
             padding: 0;
@@ -81,7 +81,7 @@
           .top-content .content h2{
             width: 60%;
           }
-          
+
           .top-content .content p{
             width: 40%;
           }
@@ -107,7 +107,7 @@
           height: 30px;
           margin: 5px;
         }
-        
+
         .top-content {
           position: relative;
         }
@@ -125,15 +125,15 @@
           z-index: -1; /* Place the overlay behind the content */
         }
 
-    
+
       </style>
 
-    
+
 </head>
 <body>
     @include('komponen/navbar')
 
-    
+
     <div class="middle-content container-fluid d-flex justify-content-center" style="margin-top:200px; margin-bottom:200px; color:white;">
         <div class="kiri d-flex flex-column">
             <div class="header">
@@ -166,7 +166,7 @@
               <p>Error: Type_Content is not a string</p>
           @endif
         </div>
-        
+
     </div>
 
     <div class="second-content" style="display:flex; flex-direction:column; align-items:center; margin-top: 300px; margin-bottom: 400px">
@@ -176,18 +176,18 @@
                 @if (($index % 3 === 0) || $index === 0)  <div class="container row-element justify-content-center d-flex align-items-center">
                 @else
                 @endif
-                  
+
                 <a href="{{$c->filename}}" target="_blank"><img src="{{$c->filename}}" alt="" style="margin:10px; max-height:400px;"></a>
                 @if ((($index + 1) % 3 === 0 && $index > 0))  </div>
                 @endif
               @endforeach
-              
-              
+
+
             </div>
         </div>
     </div>
 
-    
+
 
     <div class="footer d-flex bg-light justify-content-between align-items-center p-3" >
       <p style="margin-top:0; margin-bottom:0;">SuedeSpace - Jakarta selatan, No.012, IN</p>

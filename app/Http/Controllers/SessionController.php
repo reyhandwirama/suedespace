@@ -18,26 +18,24 @@ class SessionController extends Controller
         }
     }
     function login(Request $request){
-        Session::flash('username',$request->username);
         $request->validate([
         'username'=>'required',
         'password'=>'required'
 
         ],[
-            'username.required'=>'Username Wajib Diisi',
-            'password.required'=>'Password wajib diisi'
+            'username.required'=>'Username Wajib Diisi woy',
+            'password.required'=>'Password wajib diisi woy'
         ]);
+        $infologin = [
+            'username'=> $request->username,
+            'password'=> $request->password
+        ];
 
-    $infologin = [
-        'username'=> $request->username,
-        'password'=> $request->password
-    ];
-
-    if(Auth::attempt($infologin)){
-        return redirect('/admin/dashboard-admin')->with('success','Berhasil masuk');
-    } else{
-        return redirect('/login')->withErrors('Username dan password yang dimasukkan tidak valid');
-    }
+        if(Auth::attempt($infologin)){
+            return redirect('/admin/dashboard-admin')->with('success','Berhasil masuk');
+        } else{
+            return redirect('/login')->withErrors('Username dan password yang dimasukkan tidak valid');
+        }
     }
 
 
